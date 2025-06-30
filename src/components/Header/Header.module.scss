@@ -1,0 +1,148 @@
+.header {
+  width: 100%;
+  background: #f7f8fd;
+  padding-top: 32px;
+  padding-bottom: 16px;
+}
+
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.logoWrap {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-right: 118px;
+}
+
+.logo {
+  width: 48px;
+  height: 40px;
+}
+
+.nav {
+  display: flex;
+  gap: 40px;
+  flex: 1;
+  justify-content: flex-start;
+  margin: 0;
+  align-items: center;
+  a {
+    color: #3d3a4b;
+    font-weight: 500;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: color 0.2s;
+    &:hover {
+      color: #a084e8;
+    }
+  }
+}
+
+.primaryBtn {
+  background: #fff;
+  color: #3d3a4b;
+  font-weight: 600;
+  border: none;
+  border-radius: 32px;
+  padding: 16px 40px;
+  box-shadow: 0 4px 24px 0 rgba(160, 132, 232, 0.10);
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  &:hover {
+    background: #a084e8;
+    color: white;
+  }
+  @media (max-width: 900px) {
+    padding: 12px 24px;
+    font-size: 1rem;
+  }
+}
+
+.menuIcon {
+  width: 32px;
+  height: 32px;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  margin-left: 20px;
+  span {
+    display: block;
+    height: 4px;
+    background: #3d3a4b;
+    border-radius: 2px;
+    width: 100%;
+  }
+}
+
+.mobileNav {
+  position: absolute;
+  top: 80px;
+  right: 20px;
+  width: 200px;
+  background: #5DCFB1;
+  border-radius: 8px;
+  z-index: 100;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 16px;
+  gap: 16px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+
+  &.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  a {
+    color: #fff;
+    font-size: 1rem;
+    text-decoration: none;
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    transition: background 0.2s;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+  }
+}
+
+.closeBtn {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .container {
+    justify-content: space-between;
+    padding: 0 20px;
+  }
+  .nav {
+    display: none;
+  }
+  .menuIcon {
+    display: flex;
+  }
+  .logoWrap {
+    margin-right: 0;
+  }
+}

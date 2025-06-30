@@ -1,0 +1,223 @@
+.footer {
+    width: 100%;
+    background: #fff;
+    padding-top: 60px;
+    color: #3d3a4b;
+  }
+  
+  .container {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding-bottom: 40px;
+  }
+  
+  .topSection {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 60px;
+    @media (max-width: 900px) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 40px;
+    }
+  }
+  
+  .logoWrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: #3d3a4b;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .address,
+  .contact {
+    color: #8b8b8b;
+    line-height: 1.6;
+  }
+  
+  .contact {
+    margin-top: 20px;
+  }
+  
+  .links {
+    h4 {
+      margin-bottom: 24px;
+      font-weight: 600;
+    }
+    a {
+      display: block;
+      margin-bottom: 16px;
+      color: #8b8b8b;
+      text-decoration: none;
+      &:hover {
+        color: #a084e8;
+      }
+    }
+  }
+  
+  .socialIcons {
+    display: flex;
+    gap: 16px;
+    .socialIcon {
+      width: 48px;
+      height: 48px;
+      background: #F0F0F0;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+      svg {
+        width: 24px;
+        height: 24px;
+        fill: #8B8B8B;
+        transition: fill 0.2s;
+      }
+      &:hover {
+        background: #a084e8;
+        svg {
+          fill: #fff;
+        }
+      }
+    }
+  }
+  
+  .bottomSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 40px;
+    border-top: 1px solid #e8e8e8;
+    color: #8b8b8b;
+    position: relative;
+    @media (max-width: 900px) {
+      flex-direction: column;
+      gap: 20px;
+      text-align: center;
+    }
+  }
+  
+  .chatIcon {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 64px;
+    height: 64px;
+    background: #A084E8;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(160, 132, 232, 0.4);
+    transition: all 0.2s;
+    svg {
+      width: 32px;
+      height: 32px;
+      fill: #fff;
+    }
+    &:hover {
+      transform: translateY(-5px);
+    }
+  }
+
+  .trySection {
+    max-width: 1120px;
+    margin: 0 auto 60px auto;
+    padding-bottom: 60px;
+    border-bottom: 1px solid #e8e8e8;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h2 {
+      font-size: 2.5rem;
+      margin: 0 0 10px 0;
+      color: #3D3A4B;
+    }
+
+    p {
+      margin: 0;
+      font-size: 1.1rem;
+      color: #8B8B8B;
+    }
+  }
+
+  .tryButtons {
+    display: flex;
+    gap: 20px;
+
+    button {
+      border-radius: 32px;
+      padding: 16px 32px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+    }
+
+    .learnMoreBtn {
+      background: #E23A94;
+      color: #fff;
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+
+    .requestDemoBtn {
+      background: #fff;
+      color: #3D3A4B;
+      border: 1px solid #E8E8E8;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      &:hover {
+        background: #f7f8fd;
+      }
+    }
+  }
+
+  .signInBtn {
+    composes: primaryBtn from "../Header/Header.module.scss";
+  }
+
+  // Responsive
+  @media (max-width: 900px) {
+    .trySection, .topSection {
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+      text-align: center;
+    }
+
+    .logoWrap {
+      justify-content: center;
+    }
+
+    .tryButtons {
+      width: 100%;
+      flex-direction: column;
+      button {
+        width: 100%;
+      }
+    }
+    
+    .links {
+      width: 100%;
+    }
+
+    .bottomSection {
+      flex-direction: column;
+      gap: 20px;
+      text-align: center;
+    }
+
+    .chatIcon {
+      position: static;
+    }
+  }
