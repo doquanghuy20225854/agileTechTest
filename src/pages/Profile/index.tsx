@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./index.module.scss";
-import { getPosts, deletePost } from "../../api/posts";
+import { getPosts, deletePost, createPost } from "../../api/posts";
 import { Post } from "../../types/post";
 import { removeToken } from "../../utils/token";
 import Logo from "../../assets/logo.svg";
@@ -12,14 +12,22 @@ const Profile = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTitle, setSearchTitle] = useState("");
+  const [showAddForm, setShowAddForm] = useState(false);
+  const [newPost, setNewPost] = useState({ title: "", description: "", tags: "" });
 
   const fetchPosts = async (page: number, title: string) => {
     try {
-      const response = await getPosts({ page, title });
+      const params: any = { page };
+      if (title) params.title = title;
+      const response = await getPosts(params);
       setPosts(response.posts);
       setTotalPages(response.total_pages);
-    } catch (error) {
+    } catch (error: any) {
       console.error("Failed to fetch posts:", error);
+      if (error.response) {
+        console.error("Response status:", error.response.status);
+        console.error("Response data:", error.response.data);
+      }
     }
   };
 
@@ -49,6 +57,27 @@ const Profile = () => {
     fetchPosts(1, searchTitle);
   };
 
+  const handleAddNew = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      await createPost({
+        title: newPost.title,
+        description: newPost.description,
+        tags: newPost.tags.split(",").map((t) => t.trim()).filter(Boolean),
+      });
+      setShowAddForm(false);
+      setNewPost({ title: "", description: "", tags: "" });
+      fetchPosts(currentPage, searchTitle);
+    } catch (error: any) {
+      alert("Failed to add post");
+      console.error("Create post error:", error);
+      if (error.response) {
+        console.error("Response status:", error.response.status);
+        console.error("Response data:", error.response.data);
+      }
+    }
+  };
+
   return (
     <div className={styles.profilePage}>
       <div className={styles.sidebar}>
@@ -66,7 +95,7 @@ const Profile = () => {
       </div>
       <div className={styles.contentArea}>
         <div className={styles.toolbar}>
-          <button className={styles.addNewBtn}>Add new</button>
+          <button className={styles.addNewBtn} onClick={() => setShowAddForm(true)}>Add new</button>
           <form className={styles.filters} onSubmit={handleSearch}>
             <input
               type="text"
@@ -130,6 +159,40 @@ const Profile = () => {
             &gt;
           </button>
         </div>
+
+        {showAddForm && (
+          <div className={styles.modalOverlay}>
+            <div className={styles.modal}>
+              <h3>Add New Post</h3>
+              <form onSubmit={handleAddNew}>
+                <input
+                  type="text"
+                  placeholder="Title"
+                  value={newPost.title}
+                  onChange={e => setNewPost({ ...newPost, title: e.target.value })}
+                  required
+                />
+                <input
+                  type="text"
+                  placeholder="Description"
+                  value={newPost.description}
+                  onChange={e => setNewPost({ ...newPost, description: e.target.value })}
+                  required
+                />
+                <input
+                  type="text"
+                  placeholder="Tags (comma separated)"
+                  value={newPost.tags}
+                  onChange={e => setNewPost({ ...newPost, tags: e.target.value })}
+                />
+                <div className={styles.modalActions}>
+                  <button type="submit">Add</button>
+                  <button type="button" onClick={() => setShowAddForm(false)}>Cancel</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

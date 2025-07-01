@@ -2,7 +2,7 @@ import axios from 'axios';
 import { getToken, getRefreshToken, setToken, removeToken } from '../utils/token';
 import { refreshToken as refreshTokenApi } from './auth';
 
-const API_URL = process.env.REACT_APP_API_URL || "https://api-test.agiletech.vn/api";
+const API_URL = "https://api-test-web.agiletech.vn/api";
 
 const axiosInstance = axios.create({
   baseURL: API_URL,

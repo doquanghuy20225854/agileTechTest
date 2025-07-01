@@ -13,7 +13,9 @@ interface GetPostsResponse {
 }
 
 export const getPosts = async (params: GetPostsParams): Promise<GetPostsResponse> => {
-  const response = await axiosInstance.get('/posts', { params });
+  const cleanParams: any = { ...params };
+  if (!cleanParams.title) delete cleanParams.title;
+  const response = await axiosInstance.get('/posts', { params: cleanParams });
   return response.data;
 };
 
@@ -30,6 +32,16 @@ export const deletePost = async (postId: string) => {
 export const updatePost = async (postId: string, data: { title?: string; content?: string }) => {
   const accessToken = getToken();
   const response = await axiosInstance.patch(`/posts/${postId}`, data, {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
+  return response.data;
+};
+
+export const createPost = async (data: { title: string; description: string; tags: string[] }) => {
+  const accessToken = getToken();
+  const response = await axiosInstance.post('/posts', data, {
     headers: {
       Authorization: `Bearer ${accessToken}`,
     },
