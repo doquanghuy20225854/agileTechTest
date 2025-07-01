@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import styles from "./Testimonials.module.scss";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { motion } from "framer-motion";
 
 interface Testimonial {
   id: string;
@@ -44,11 +45,17 @@ const Testimonials = () => {
   return (
     <section className={styles.testimonialsSection}>
       <h2 className={styles.title}>Testimonials</h2>
-      <div className={styles.sliderWrapper}>
+
+      <motion.div
+        className={styles.sliderWrapper}
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ amount: 0.3 }}
+      >
         <Slider {...settings}>
           {testimonials.map((item, idx) => (
             <div key={item.id || idx}>
-              {/* Wrapper này đảm bảo styles.card không bị override bởi react-slick */}
               <div className={styles.card}>
                 <div className={styles.avatarWrap}>
                   <img
@@ -66,7 +73,7 @@ const Testimonials = () => {
             </div>
           ))}
         </Slider>
-      </div>
+      </motion.div>
     </section>
   );
 };

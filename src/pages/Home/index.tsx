@@ -9,7 +9,7 @@ import Footer from "../../components/Footer/Footer";
 
 const Home = () => (
   <div className={styles.homeBg}>
-    <Header />
+    <Header isLoggedIn={false} onLogout={() => {}} />
     <HeroSection />
     <Features />
     <Testimonials />

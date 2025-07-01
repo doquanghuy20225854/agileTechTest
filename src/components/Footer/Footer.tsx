@@ -5,10 +5,17 @@ import { ReactComponent as YoutubeIcon } from "../../assets/youtube.svg";
 import { ReactComponent as InstagramIcon } from "../../assets/instagram.svg";
 import { ReactComponent as GithubIcon } from "../../assets/github.svg";
 import { ReactComponent as ChatIcon } from "../../assets/messenger.svg";
+import { motion } from "framer-motion";
 
 const Footer = () => {
   return (
-    <footer className={styles.footer}>
+    <motion.footer
+      className={styles.footer}
+      initial={{ opacity: 0, y: 60 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      viewport={{ amount: 0.3 }}
+    >
       <div className={styles.trySection}>
         <div className={styles.tryContent}>
           <h2>Try for free!</h2>
@@ -21,6 +28,7 @@ const Footer = () => {
           </button>
         </div>
       </div>
+
       <div className={styles.container}>
         <div className={styles.topSection}>
           <div className={styles.companyInfo}>
@@ -37,6 +45,7 @@ const Footer = () => {
               1-232-3434 (Main)
             </p>
           </div>
+
           <div className={styles.links}>
             <h4>About</h4>
             <a href="#">Profile</a>
@@ -44,6 +53,7 @@ const Footer = () => {
             <a href="#">Careers</a>
             <a href="#">DW News</a>
           </div>
+
           <div className={styles.links}>
             <h4>Help</h4>
             <a href="#">Support</a>
@@ -52,6 +62,7 @@ const Footer = () => {
             <a href="#">Reports</a>
             <a href="#">Q&A</a>
           </div>
+
           <div className={styles.social}>
             <h4>Social Media</h4>
             <div className={styles.socialIcons}>
@@ -61,14 +72,18 @@ const Footer = () => {
             </div>
           </div>
         </div>
+
         <div className={styles.bottomSection}>
-          <p>&copy; DataWarehouse&trade;, 2020. All rights reserved. <br/> Company Registration Number: 21479524.</p>
+          <p>
+            &copy; DataWarehouse&trade;, 2020. All rights reserved. <br />
+            Company Registration Number: 21479524.
+          </p>
           <div className={styles.chatIcon}>
             <ChatIcon />
           </div>
         </div>
       </div>
-    </footer>
+    </motion.footer>
   );
 };
 

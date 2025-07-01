@@ -46,9 +46,14 @@
   }
 }
 
+.actions {
+  display: flex;
+  gap: 16px;
+}
+
 .primaryBtn {
-  background: #fff;
-  color: #3d3a4b;
+  background: #a084e8;
+  color: #fff;
   font-weight: 600;
   border: none;
   border-radius: 32px;
@@ -60,8 +65,9 @@
   gap: 8px;
   cursor: pointer;
   transition: all 0.2s;
+  text-decoration: none;
   &:hover {
-    background: #a084e8;
+    background: #8667d4;
     color: white;
   }
   @media (max-width: 900px) {

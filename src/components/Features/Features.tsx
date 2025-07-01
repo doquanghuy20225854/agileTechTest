@@ -4,6 +4,7 @@ import imgSearch from "../../assets/imageSearch.svg";
 import img24h from "../../assets/image24h.svg";
 import imgPrint from "../../assets/imagePrintOut.svg";
 import imgSecurity from "../../assets/imageSecurityCode.svg";
+import { motion } from "framer-motion";
 
 const features = [
   {
@@ -39,9 +40,21 @@ const Features = () => {
       <p className={styles.subtitle}>
         Some of the features and advantages that we provide for those of you who store data in this Data Warehouse.
       </p>
+
       <div className={styles.grid}>
         {features.map((f, idx) => (
-          <div className={`${styles.card} ${f.color}`} key={f.title}>
+          <motion.div
+            key={f.title}
+            className={`${styles.card} ${f.color}`}
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ amount: 0.2 }}
+            transition={{
+              duration: 0.6,
+              ease: "easeOut",
+              delay: idx * 0.2, // Tạo hiệu ứng stagger theo thứ tự
+            }}
+          >
             <div className={styles.imgWrap}>
               <img src={f.img} alt={f.title} className={styles.img} />
             </div>
@@ -52,7 +65,7 @@ const Features = () => {
                 Learn more <span>&rarr;</span>
               </a>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>
