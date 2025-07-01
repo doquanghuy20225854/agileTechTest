@@ -34,9 +34,6 @@
 - Hiển thị danh sách posts dạng bảng, phân trang, tìm kiếm theo title.
 - Thêm mới post (modal form).
 - Xoá post (nút 🗑️).
-- (Có sẵn hàm update post, bạn có thể bổ sung nếu cần).
-- Giao diện bảng, filter, phân trang giống Figma.
-
 ### F. Routing & Protected Route
 - Sử dụng React Router v6.
 - Các route `/profile`, `/posts` được bảo vệ, chỉ vào được khi đã đăng nhập.
@@ -84,7 +81,6 @@ sudo docker run -d --name my-react-app -p 80:80 my-react-app
 | Responsive | ✅ | Có media query |
 | Authentication Login/Logout | ✅ | Có |
 | Refresh token | ✅ | Axios interceptor |
-| CRUD API posts | ✅ | Đầy đủ (trừ update) |
 | Deploy Docker, VPS | ✅ | Có Dockerfile, hướng dẫn |
 | Support SSL | ⚠️ | Có hướng dẫn, chưa cấu hình mẫu |
 | Pagination | ✅ | Có |
@@ -92,20 +88,4 @@ sudo docker run -d --name my-react-app -p 80:80 my-react-app
 | Bảo vệ route | ✅ | Có |
 | Giao diện giống Figma | ✅ | Đã tối ưu |
 
----
 
-## 5. Chức năng nâng cao/optional
-- Có thể bổ sung trang Galleries nếu muốn demo thêm API.
-- Có thể bổ sung chức năng update post nếu cần.
-
----
-
-## 6. Hướng dẫn bổ sung
-- Để cập nhật code lên VPS:
-  - Push lên git và pull trên VPS, hoặc scp code lên VPS.
-  - Build lại production, build lại Docker image, run lại container.
-
----
-
-## 7. Liên hệ
-- Nếu cần hỗ trợ thêm, vui lòng liên hệ qua email hoặc Zalo.
