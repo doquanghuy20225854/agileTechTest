@@ -41,7 +41,7 @@
 
 ### G. Docker & Deploy
 - Có file Dockerfile chuẩn: build React, copy vào Nginx serve static.
-- Đã hướng dẫn deploy lên VPS, build/run Docker container, mở port 80.
+- http://3.106.114.237/
 
 ---
 
